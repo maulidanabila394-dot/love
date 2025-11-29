@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Cinta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page1 {
+            transform: translateX(0);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .page2 {
+            transform: translateX(100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .page1.slide-out {
+            transform: translateX(-100%);
+        }
+
+        .page2.slide-in {
+            transform: translateX(0);
+        }
+
+        .content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .quote {
+            font-size: 1.5em;
+            color: white;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .heart {
+            color: #ff4757;
+            font-size: 2em;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 3em;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 2.5em;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(15deg); }
+        }
+
+        .love-symbol {
+            position: absolute;
+            font-size: 4em;
+            animation: rotate 10s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: white;
+            color: #f5576c;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .garden {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, #2ecc71 0%, rgba(46, 204, 113, 0) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 50px;
+        }
+
+        .tree {
+            font-size: 4em;
+            animation: treeGrow 3s ease-in-out;
+        }
+
+        @keyframes treeGrow {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Halaman 1 -->
+    <div class="page page1" id="page1">
+        <div class="content">
+            <h1>💕 Cinta Sejati 💕</h1>
+            <p class="quote">
+                "Cinta adalah ketika kebahagiaan orang lain<br>
+                menjadi kebahagiaanmu sendiri"
+            </p>
+            <div class="heart">Nabila❤️ kim </div>
+            <p class="quote">
+                "Kamu adalah alasan aku tersenyum<br>
+                setiap hari"
+            </p>
+            <button class="btn" onclick="nextPage()">Halaman Berikutnya ➜</button>
+        </div>
+
+        <div class="balloon" style="left: 10%; top: 15%; animation-delay: 0s;">🎈</div>
+        <div class="balloon" style="right: 15%; top: 20%; animation-delay: 1s;">🎈</div>
+        <div class="balloon" style="left: 20%; bottom: 20%; animation-delay: 2s;">🎈</div>
+        
+        <div class="love-symbol" style="top: 10%; right: 10%;">LOVE</div>
+        <div class="love-symbol" style="bottom: 30%; left: 5%;">💗</div>
+
+        <div class="garden">
+            <div class="tree">🌳</div>
+            <div class="tree">🌲</div>
+            <div class="tree">🌳</div>
+            <div class="tree">🌲</div>
+        </div>
+    </div>
+
+    <!-- Halaman 2 -->
+    <div class="page page2" id="page2">
+        <div class="content">
+            <h1>🌹 Taman Cinta Kita 🌹</h1>
+            <p class="quote">
+                "Di taman ini, setiap bunga mekar<br>
+                mewakili momen indah bersamamu"
+            </p>
+            <div class="heart">💖</div>
+            <p class="quote">
+                "Cinta kita tumbuh seperti taman yang indah,<br>
+                penuh warna dan kebahagiaan"
+            </p>
+            <button class="btn" onclick="prevPage()">⬅ Kembali</button>
+        </div>
+
+        <div class="flower" style="left: 8%; top: 25%;">🌺</div>
+        <div class="flower" style="right: 10%; top: 30%; animation-delay: 1s;">🌸</div>
+        <div class="flower" style="left: 15%; bottom: 30%; animation-delay: 1.5s;">🌼</div>
+        <div class="flower" style="right: 20%; bottom: 25%; animation-delay: 2s;">🌻</div>
+
+        <div class="balloon" style="right: 25%; top: 10%; animation-delay: 0.5s;">🎈</div>
+        <div class="balloon" style="left: 25%; top: 15%; animation-delay: 1.5s;">🎈</div>
+
+        <div class="love-symbol" style="top: 15%; left: 8%;">❤️</div>
+        <div class="love-symbol" style="bottom: 35%; right: 10%;">💝</div>
+
+        <div class="garden">
+            <div class="tree">🌳</div>
+            <div class="tree">🌺</div>
+            <div class="tree">🌸</div>
+            <div class="tree">🌲</div>
+            <div class="tree">🌹</div>
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles
+        function createSparkles() {
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                document.querySelector('.page1').appendChild(sparkle);
+                
+                const sparkle2 = sparkle.cloneNode();
+                document.querySelector('.page2').appendChild(sparkle2);
+            }
+        }
+
+        function nextPage() {
+            document.getElementById('page1').classList.add('slide-out');
+            document.getElementById('page2').classList.add('slide-in');
+        }
+
+        function prevPage() {
+            document.getElementById('page1').classList.remove('slide-out');
+            document.getElementById('page2').classList.remove('slide-in');
+        }
+
+        createSparkles();
+    </script>
+</body>
+</html>
